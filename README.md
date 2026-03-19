@@ -239,4 +239,4 @@ MPP_SECRET_KEY=<32-byte hex>   # for Mppx.create() — sign/verify challenges
 
 ## License
 
-MIT
+HEHEHEHEH
