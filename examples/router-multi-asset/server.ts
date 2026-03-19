@@ -8,7 +8,7 @@ import { Hono } from 'hono'
 import { serve } from '@hono/node-server'
 import { PublicKey } from '@solana/web3.js'
 import { Store } from 'mppx'
-import { createPaymentRouter } from 'mppx-solana/router'
+import { createPaymentRouter } from 'mpp-solana/router'
 
 const recipient = new PublicKey(process.env.TEST_RECIPIENT_ADDRESS!)
 const usdcMint = new PublicKey(process.env.USDC_DEVNET_MINT!)

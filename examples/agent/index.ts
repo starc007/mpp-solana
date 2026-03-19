@@ -1,7 +1,7 @@
 /**
- * AI agent example: autonomous USDC payments via mppx-solana.
+ * AI agent example: autonomous USDC payments via mpp-solana.
  *
- * Demonstrates using mppx-solana in an AI agent context where the agent
+ * Demonstrates using mpp-solana in an AI agent context where the agent
  * autonomously decides to pay for API access using its wallet.
  *
  * Run: bun examples/agent/index.ts
@@ -9,7 +9,7 @@
  */
 import { Keypair, type Transaction, type VersionedTransaction } from '@solana/web3.js'
 import { decode as bs58Decode } from 'bs58'
-import { solana, Mppx } from 'mppx-solana/client'
+import { solana, Mppx } from 'mpp-solana/client'
 
 // Agent wallet — loaded from env or a secrets manager in production
 async function loadAgentWallet() {

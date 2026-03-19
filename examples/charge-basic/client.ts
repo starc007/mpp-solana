@@ -6,7 +6,7 @@
  */
 import { Keypair, Connection, type Transaction, type VersionedTransaction } from '@solana/web3.js'
 import { decode as bs58Decode } from 'bs58'
-import { solana, Mppx } from 'mppx-solana/client'
+import { solana, Mppx } from 'mpp-solana/client'
 
 const keypair = Keypair.fromSecretKey(bs58Decode(process.env.TEST_WALLET_PRIVATE_KEY!))
 const wallet = {

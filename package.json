@@ -1,5 +1,5 @@
 {
-  "name": "mppx-solana",
+  "name": "mpp-solana",
   "version": "0.1.0",
   "description": "Solana SPL token payments for the Machine Payments Protocol",
   "type": "module",
@@ -38,11 +38,11 @@
   "author": "starc007",
   "repository": {
     "type": "git",
-    "url": "https://github.com/starc007/mppx-solana"
+    "url": "https://github.com/starc007/mpp-solana"
   },
-  "homepage": "https://github.com/starc007/mppx-solana#readme",
+  "homepage": "https://github.com/starc007/mpp-solana#readme",
   "bugs": {
-    "url": "https://github.com/starc007/mppx-solana/issues"
+    "url": "https://github.com/starc007/mpp-solana/issues"
   },
   "dependencies": {
     "@noble/hashes": "^2.0.0"

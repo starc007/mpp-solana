@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect, useRef } from 'react'
 import { PublicKey, type Transaction, type VersionedTransaction } from '@solana/web3.js'
-import { solana, Mppx } from 'mppx-solana/client'
+import { solana, Mppx } from 'mpp-solana/client'
 
 // ─── Types ──────────────────────────────────────────────────────────────────
 
@@ -622,7 +622,7 @@ export function App() {
             gap: 4,
           }}>
             <LogLine dim>system initialized</LogLine>
-            <LogLine dim>protocol: mppx-solana v0.1.0</LogLine>
+            <LogLine dim>protocol: mpp-solana v0.1.0</LogLine>
             <LogLine dim>network: devnet</LogLine>
             <LogLine dim>---</LogLine>
             {logs.map((line, i) => (

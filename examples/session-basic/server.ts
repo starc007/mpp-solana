@@ -8,7 +8,7 @@ import { Hono } from 'hono'
 import { serve } from '@hono/node-server'
 import { Keypair, PublicKey } from '@solana/web3.js'
 import { decode as bs58Decode } from 'bs58'
-import { solana, Store, Mppx } from 'mppx-solana/server'
+import { solana, Store, Mppx } from 'mpp-solana/server'
 
 const recipient = new PublicKey(process.env.TEST_RECIPIENT_ADDRESS!)
 const mint = new PublicKey(process.env.USDC_DEVNET_MINT!)

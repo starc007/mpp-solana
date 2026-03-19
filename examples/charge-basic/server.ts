@@ -1,5 +1,5 @@
 /**
- * Minimal example: single-token USDC charge server using mppx-solana.
+ * Minimal example: single-token USDC charge server using mpp-solana.
  *
  * Run: bun examples/charge-basic/server.ts
  * Requires: SOLANA_RPC_URL, TEST_RECIPIENT_ADDRESS, USDC_DEVNET_MINT
@@ -7,7 +7,7 @@
 import { Hono } from 'hono'
 import { serve } from '@hono/node-server'
 import { PublicKey } from '@solana/web3.js'
-import { solana, Store, Mppx } from 'mppx-solana/server'
+import { solana, Store, Mppx } from 'mpp-solana/server'
 
 const recipient = new PublicKey(process.env.TEST_RECIPIENT_ADDRESS!)
 const mint = new PublicKey(process.env.USDC_DEVNET_MINT!)

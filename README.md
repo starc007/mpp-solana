@@ -1,4 +1,4 @@
-# mppx-solana
+# mpp-solana
 
 Solana SPL token payments for the [Machine Payments Protocol](https://github.com/mppxyz/mppx) (MPP) via HTTP 402.
 
@@ -21,7 +21,7 @@ Client                           Server
 ## Installation
 
 ```bash
-npm install mppx-solana mppx @solana/web3.js @solana/spl-token
+npm install mpp-solana mppx @solana/web3.js @solana/spl-token
 ```
 
 ## Quick Start
@@ -30,7 +30,7 @@ npm install mppx-solana mppx @solana/web3.js @solana/spl-token
 
 ```ts
 import { Hono } from 'hono'
-import { solana, Store, Mppx } from 'mppx-solana/server'
+import { solana, Store, Mppx } from 'mpp-solana/server'
 import { PublicKey } from '@solana/web3.js'
 
 const chargeMethod = solana.charge({
@@ -63,7 +63,7 @@ app.all('/api/data', async (c) => {
 ### Client (Browser / Node.js)
 
 ```ts
-import { solana, Mppx } from 'mppx-solana/client'
+import { solana, Mppx } from 'mpp-solana/client'
 
 // Works with any Solana wallet (Phantom, Backpack, Solflare, keypair, agent wallet...)
 const chargeClient = solana.charge({
@@ -86,7 +86,7 @@ Charge per request. Each call requires a fresh on-chain transaction.
 
 **Server:**
 ```ts
-import { solana, Store, Mppx } from 'mppx-solana/server'
+import { solana, Store, Mppx } from 'mpp-solana/server'
 
 const method = solana.charge({
   recipient: new PublicKey('...'),
@@ -100,7 +100,7 @@ const method = solana.charge({
 
 **Client:**
 ```ts
-import { solana, Mppx } from 'mppx-solana/client'
+import { solana, Mppx } from 'mpp-solana/client'
 
 const method = solana.charge({
   wallet: myWallet,
@@ -115,7 +115,7 @@ Client deposits a lump sum upfront. Server deducts per request from the balance.
 
 **Server:**
 ```ts
-import { solana, Store, Mppx } from 'mppx-solana/server'
+import { solana, Store, Mppx } from 'mpp-solana/server'
 import { Keypair } from '@solana/web3.js'
 
 const method = solana.session({
@@ -129,7 +129,7 @@ const method = solana.session({
 
 **Client:**
 ```ts
-import { solana, Mppx } from 'mppx-solana/client'
+import { solana, Mppx } from 'mpp-solana/client'
 
 const method = solana.session({
   wallet: agentWallet,
@@ -160,8 +160,8 @@ await mppxClient.fetch('/api/endpoint')
 Accept multiple tokens simultaneously. One endpoint, any token the client wants to pay with.
 
 ```ts
-import { solana, Store, Mppx } from 'mppx-solana/server'
-import { PaymentRouter } from 'mppx-solana/router'
+import { solana, Store, Mppx } from 'mpp-solana/server'
+import { PaymentRouter } from 'mpp-solana/router'
 
 const store = Store.memory() // shared — prevents cross-token replay
 
@@ -218,7 +218,7 @@ solana.charge({ network: 'devnet', ... })
 Pass a persistent `Store` to prevent the same transaction being accepted twice:
 
 ```ts
-import { Store } from 'mppx-solana/server'
+import { Store } from 'mpp-solana/server'
 
 // In-memory (development)
 const store = Store.memory()

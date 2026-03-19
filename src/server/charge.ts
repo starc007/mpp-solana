@@ -34,7 +34,7 @@ export function charge(params: charge.Parameters) {
 
   if (!params.store) {
     console.warn(
-      '[mppx-solana] solana.charge() instantiated without a store — replay protection is disabled. ' +
+      '[mpp-solana] solana.charge() instantiated without a store — replay protection is disabled. ' +
       'Pass store: Store.memory() or a persistent store in production.',
     )
   }
