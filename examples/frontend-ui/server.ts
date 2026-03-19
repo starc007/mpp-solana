@@ -23,6 +23,11 @@ const chargeMethod = solana.charge({
   verifyTimeout: 90_000,
 })
 
+const mppx = Mppx.create({
+  secretKey: process.env.MPP_SECRET_KEY!,
+  methods: [chargeMethod],
+})
+
 const app = new Hono()
 
 // Allow requests from the Vite dev server
@@ -34,7 +39,6 @@ app.use('*', cors({
 }))
 
 app.all('/pay', async (c) => {
-  const mppx = Mppx.create({ methods: [chargeMethod] })
   const result = await mppx['solana/charge']({
     amount: '0.10',
     description: 'API access via HTTP 402',

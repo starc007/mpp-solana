@@ -110,6 +110,7 @@ export function App() {
   const [status, setStatus] = useState<PaymentStatus>({ phase: 'idle' })
   const [logs, setLogs] = useState<string[]>([])
   const [txCount, setTxCount] = useState(0)
+  const [challengeMint, setChallengeMint] = useState<string>('')
   const logsEndRef = useRef<HTMLDivElement>(null)
 
   const log = useCallback((msg: string) => {
@@ -189,6 +190,9 @@ export function App() {
       const wrappedClient = {
         ...originalMethod,
         createCredential: async (ctx: Parameters<typeof originalMethod.createCredential>[0]) => {
+          // Show the mint the server is asking for
+          const mint = ctx.challenge.request.methodDetails?.mint
+          if (mint) setChallengeMint(mint)
           const cred = await originalMethod.createCredential(ctx)
           // Extract signature from credential (base64 JSON payload)
           try {
@@ -371,6 +375,21 @@ export function App() {
             <div style={{ fontSize: 11, color: 'var(--text-secondary)', letterSpacing: '0.1em' }}>
               USDC · DEVNET · HTTP 402
             </div>
+            {challengeMint && (
+              <div style={{ marginTop: 10, fontSize: 10, color: 'var(--text-muted)', fontFamily: 'var(--font-mono)', letterSpacing: '0.05em' }}>
+                MINT:{' '}
+                <a
+                  href={`https://explorer.solana.com/address/${challengeMint}?cluster=devnet`}
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{ color: 'var(--text-secondary)', textDecoration: 'none' }}
+                  onMouseEnter={e => { (e.target as HTMLElement).style.color = 'var(--accent)' }}
+                  onMouseLeave={e => { (e.target as HTMLElement).style.color = 'var(--text-secondary)' }}
+                >
+                  {challengeMint.slice(0, 8)}…{challengeMint.slice(-8)}
+                </a>
+              </div>
+            )}
 
             {/* Progress bar — only during loading */}
             {isLoading && (
