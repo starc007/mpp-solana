@@ -1,4 +1,4 @@
-import { Method, Credential } from 'mppx'
+import { Method, Credential, Receipt } from 'mppx'
 import { Connection, PublicKey } from '@solana/web3.js'
 import { session as sessionMethod } from '../methods/session.js'
 import { resolvePool, type SolanaNetwork, type PriorityFee } from '../core/rpc.js'
@@ -86,10 +86,10 @@ export function session(params: session.Parameters) {
   })
 
   function setSessionFromResponse(response: Response): void {
-    const h = response.headers.get('MPP-Receipt')
+    const h = response.headers.get('Payment-Receipt')
     if (!h) return
     try {
-      const receipt = JSON.parse(h)
+      const receipt = Receipt.deserialize(h)
       const parsed = JSON.parse(receipt.reference ?? '{}')
       if (parsed.sessionId && parsed.bearer) activeSession = { sessionId: parsed.sessionId, bearer: parsed.bearer }
     } catch { /* ignore */ }

@@ -220,7 +220,7 @@ export function App() {
         throw new Error(`Payment failed: HTTP ${response.status}`)
       }
 
-      const receiptHeader = response.headers.get('MPP-Receipt') ?? '{}'
+      const receiptHeader = response.headers.get('Payment-Receipt') ?? ''
       setTxCount(n => n + 1)
       setStatus({ phase: 'success', sig: capturedSig, receipt: receiptHeader })
       log(`confirmed ✓`)
