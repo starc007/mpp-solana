@@ -100,7 +100,7 @@ describe('session devnet integration', () => {
     const openRes = await mppxClient.fetch(`${baseUrl}/session`)
     expect(openRes.status).toBe(200)
 
-    // Capture sessionId + bearer from MPP-Receipt header
+    // Capture sessionId + bearer from Payment-Receipt header
     sessionClient.setSessionFromResponse(openRes)
     const sessionAfterOpen = sessionClient.getSession()
     expect(sessionAfterOpen).not.toBeNull()

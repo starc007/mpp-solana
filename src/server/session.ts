@@ -202,7 +202,7 @@ export function session(params: session.Parameters) {
             await saveSession(state)
 
             // Encode { sessionId, bearer } in receipt reference.
-            // The client reads this from the MPP-Receipt header via setSessionFromResponse().
+            // The client reads this from the Payment-Receipt header via setSessionFromResponse().
             return Receipt.from({
               method: 'solana',
               reference: JSON.stringify({ sessionId, bearer }),

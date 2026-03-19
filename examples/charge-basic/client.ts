@@ -30,6 +30,6 @@ const mppxClient = Mppx.create({ methods: [chargeClient] })
 
 const response = await mppxClient.fetch('http://localhost:3000/pay')
 console.log('Status:', response.status)
-console.log('Receipt:', response.headers.get('MPP-Receipt'))
+console.log('Receipt:', response.headers.get('Payment-Receipt'))
 const body = await response.json()
 console.log('Body:', body)

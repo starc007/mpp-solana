@@ -14,7 +14,7 @@ Client                           Server
   │  [pays on Solana devnet/mainnet] │
   │                                 │
   │── POST /api/data ───────────────▶│ (credential in header)
-  │                                 │ 200 OK + MPP-Receipt
+  │                                 │ 200 OK + Payment-Receipt
   │◀────────────────────────────────│
 ```
 

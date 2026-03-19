@@ -35,7 +35,7 @@ app.use('*', cors({
   origin: ['http://localhost:5173', 'http://127.0.0.1:5173'],
   allowMethods: ['GET', 'POST', 'OPTIONS'],
   allowHeaders: ['Content-Type', 'Authorization', 'WWW-Authenticate'],
-  exposeHeaders: ['WWW-Authenticate', 'MPP-Receipt'],
+  exposeHeaders: ['WWW-Authenticate', 'Payment-Receipt'],
 }))
 
 app.all('/pay', async (c) => {

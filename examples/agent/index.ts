@@ -44,7 +44,7 @@ async function callPaidApi(url: string): Promise<unknown> {
   if (!response.ok) {
     throw new Error(`API call failed: ${response.status}`)
   }
-  console.log(`Payment complete. Receipt: ${response.headers.get('MPP-Receipt')}`)
+  console.log(`Payment complete. Receipt: ${response.headers.get('Payment-Receipt')}`)
   return response.json()
 }
 
