@@ -95,6 +95,7 @@ const method = solana.charge({
   network: 'mainnet-beta',
   store: Store.memory(),
   verifyTimeout: 60_000,
+  receiptSecret: mySecret,     // optional — HMAC-hashes receipt references for privacy
 })
 ```
 
@@ -106,6 +107,7 @@ const method = solana.charge({
   wallet: myWallet,
   network: 'mainnet-beta',
   priorityFee: 'dynamic',  // 'fixed' | 'dynamic' | { microLamports: 5000 }
+  onPayment: (sig) => console.log('Paid:', sig),  // optional — capture tx signature
 })
 ```
 
@@ -134,6 +136,7 @@ import { solana, Mppx } from 'mpp-solana/client'
 const method = solana.session({
   wallet: agentWallet,
   network: 'mainnet-beta',
+  onPayment: (sig, action) => console.log(`${action}:`, sig),  // optional
 })
 
 const mppxClient = Mppx.create({ methods: [method] })
