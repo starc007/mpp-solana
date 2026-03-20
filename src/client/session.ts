@@ -16,6 +16,8 @@ export namespace session {
     endpoints?: string[]
     network?: SolanaNetwork
     priorityFee?: PriorityFee
+    /** Called after a successful on-chain payment (open deposit or topUp) with the tx signature. Fire-and-forget. */
+    onPayment?: (signature: string, action: 'open' | 'topUp') => void
   }
 }
 
@@ -61,6 +63,9 @@ export function session(params: session.Parameters) {
             priorityFee,
           })
         )
+        if (params.onPayment) {
+          Promise.resolve().then(() => params.onPayment!(signature, 'topUp')).catch(() => {})
+        }
         pendingTopUp = false
         return Credential.serialize({ challenge, payload: { action: 'topUp' as const, sessionId: activeSession.sessionId, bearer: activeSession.bearer, topUpSignature: signature } })
       }
@@ -81,6 +86,9 @@ export function session(params: session.Parameters) {
           priorityFee,
         })
       )
+      if (params.onPayment) {
+        Promise.resolve().then(() => params.onPayment!(signature, 'open')).catch(() => {})
+      }
       return Credential.serialize({ challenge, payload: { action: 'open' as const, depositSignature: signature, refundAddress: wallet.publicKey.toBase58() } })
     },
   })
