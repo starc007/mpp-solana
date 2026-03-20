@@ -14,6 +14,8 @@ export namespace charge {
     endpoints?: string[]
     network?: SolanaNetwork
     priorityFee?: PriorityFee
+    /** Called after a successful on-chain payment with the tx signature. Fire-and-forget. */
+    onPayment?: (signature: string) => void
   }
 }
 
@@ -48,6 +50,9 @@ export function charge(params: charge.Parameters) {
           priorityFee,
         })
       )
+      if (params.onPayment) {
+        Promise.resolve().then(() => params.onPayment!(signature)).catch(() => {})
+      }
       return Credential.serialize({ challenge, payload: { signature } })
     },
   })
